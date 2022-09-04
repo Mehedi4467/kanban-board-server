@@ -1,0 +1,24 @@
+{
+  "name": "kanban-board-server",
+  "version": "1.0.0",
+  "description": "Kanban board is the most popular agile task management tool.In this project I will implement simple kanban board.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mehedi4467/kanban-board-server.git"
+  },
+  "keywords": [
+    "kanban_board",
+    "job-task",
+    "OrangeToolz"
+  ],
+  "author": "Md.Mehedi Hassan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mehedi4467/kanban-board-server/issues"
+  },
+  "homepage": "https://github.com/Mehedi4467/kanban-board-server#readme"
+}
