@@ -4,6 +4,8 @@
   "description": "Kanban board is the most popular agile task management tool.In this project I will implement simple kanban board.",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "start-dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +22,13 @@
   "bugs": {
     "url": "https://github.com/Mehedi4467/kanban-board-server/issues"
   },
-  "homepage": "https://github.com/Mehedi4467/kanban-board-server#readme"
+  "homepage": "https://github.com/Mehedi4467/kanban-board-server#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "http-errors": "^2.0.0",
+    "mongodb": "^4.9.1"
+  }
 }
