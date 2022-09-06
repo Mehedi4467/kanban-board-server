@@ -2,7 +2,17 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const { MongoClient, ServerApiVersion } = require('mongodb');
+
+
+
 //internal import
+const { notFoundHandelar, errorHandler } = require('./middleware/common/errorHandler');
+// const loginRouter = require('./Router/loginRouter');
+// const userRouter =require('./Router/userRouter');
+// const inboxRouter = require('./Router/inboxRouter');
+
+
+app.use(cors());
 const app = express();
 dotenv.config();
 
@@ -46,9 +56,9 @@ app.use(express.json());
 // app.use('/inbox', inboxRouter);
 
 // 404 not found handelar
-// app.use(notFoundHandelar);
+app.use(notFoundHandelar);
 //common error handdaling
-// app.use(errorHandler);
+app.use(errorHandler);
 
 
 
