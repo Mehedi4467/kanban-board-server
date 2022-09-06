@@ -20,7 +20,6 @@ const taskStatus = async (req, res) => {
     const status = req.body.status;
     const filter = { _id: ObjectId(id) };
     const date = new Date(Date.now()).toLocaleString();
-    // const upsert = { true};
     const updateDoc = {
         $set: {
             status: status,
