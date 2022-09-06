@@ -8,9 +8,6 @@ const { notFoundHandelar, errorHandler } = require('./middleware/common/errorHan
 const { connectToServer } = require('./dbConfig/dbConnect');
 const TaskRoute = require('./routers/v1/taskRoute');
 
-// const userRouter =require('./Router/userRouter');
-// const inboxRouter = require('./Router/inboxRouter');
-
 const app = express();
 dotenv.config();
 app.use(cors());
@@ -34,8 +31,6 @@ app.use(express.json());
 
 //routung setup
 app.use('/', TaskRoute);
-// app.use('/user', userRouter);
-// app.use('/inbox', inboxRouter);
 
 // 404 not found handelar
 app.use(notFoundHandelar);
