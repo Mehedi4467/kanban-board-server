@@ -1,57 +1,39 @@
 //external import
 const express = require('express');
 const dotenv = require('dotenv');
-const { MongoClient, ServerApiVersion } = require('mongodb');
-
-
+const cors = require('cors');
 
 //internal import
 const { notFoundHandelar, errorHandler } = require('./middleware/common/errorHandler');
-// const loginRouter = require('./Router/loginRouter');
+const { connectToServer } = require('./dbConfig/dbConnect');
+const TaskRoute = require('./routers/v1/taskRoute');
+
 // const userRouter =require('./Router/userRouter');
 // const inboxRouter = require('./Router/inboxRouter');
 
-
-app.use(cors());
 const app = express();
 dotenv.config();
-
-
-
-// database connection 
-// mongoose
-//     .connect(process.env.MONGO_CONNECTION_STRING, {
-//         useNewUrlParser: true,
-//         useUnifiedTopology: true,
-//     })
-//     .then(() => console.log("database connection successful!"))
-//     .catch((err) => console.log(err));
-
-
+app.use(cors());
 
 
 // database connection 
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.9x7m2.mongodb.net/?retryWrites=true&w=majority`;
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-
-
-
-client.connect(err => {
-    const collection = client.db("kanban_board").collection("task");
-    console.log('database connect');
+connectToServer((err) => {
+    if (!err) {
+        app.listen(process.env.PORT, () => {
+            console.log(`'Kanban Board server is running ${process.env.PORT}`)
+        });
+    } else {
+        console.log(err)
+    }
 });
-
-
 
 
 // request parser
 app.use(express.json());
 
-//parse-cookies
-// app.use(cookieParser(process.env.COOKIE_SECRET));
 
 //routung setup
-// app.use('/', loginRouter);
+app.use('/', TaskRoute);
 // app.use('/user', userRouter);
 // app.use('/inbox', inboxRouter);
 
@@ -62,6 +44,4 @@ app.use(errorHandler);
 
 
 
-app.listen(process.env.PORT, () => {
-    console.log(`'Kanban Board server is running ${process.env.PORT}`)
-});
+
